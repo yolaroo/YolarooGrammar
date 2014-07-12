@@ -1,0 +1,152 @@
+{"adjectives":[
+
+{"synonym":"size+","antonym":"size-","list":[
+	{"root":"big"},
+	{"root":"large"},
+	{"root":"massive"},
+	{"root":"giant"},
+	{"root":"enormous"},
+	{"root":"huge"},
+	{"root":"tall"},
+]},
+
+{"synonym":"size-","antonym":"size+","list":[
+	{"root":"miniature"},
+	{"root":"small"},
+	{"root":"short"},
+	{"root":"little"},
+	{"root":"tiny"},
+	{"root":"little"},
+]},
+
+{"synonym":"looks+","antonym":"looks-","list":[
+	{"root":"beautiful"},
+	{"root":"handsome"},
+	{"root":"cute"},
+	{"root":"pretty"},
+	{"root":"charming"},
+	{"root":"suave"},
+	{"root":"adorable"},
+	{"root":"attractive"},
+]},
+
+{"synonym":"looks-","antonym":"looks+","list":[
+	{"root":"ugly"},
+	{"root":"horrid"},
+	{"root":"awkward"},
+	{"root":"blundering"},
+	{"root":"homely"},
+]},
+
+{"synonym":"positive+","antonym":"positive-","list":[
+	{"root":"great"},
+	{"root":"awesome"},
+	{"root":"good"},
+	{"root":"nice"},
+	{"root":"wonderful"},
+	{"root":"successful"},
+]},
+
+{"synonym":"positive-","antonym":"positive+","list":[
+	{"root":"awful"},
+	{"root":"horrid"},
+	{"root":"bad"},
+	{"root":"horrible"},
+	{"root":"despicable"},	
+	{"root":"nasty"},	
+]},
+
+{"synonym":"speed+","antonym":"speed-","list":[
+	{"root":"fast"},
+	{"root":"quick"},
+]},
+
+{"synonym":"speed-","antonym":"speed+","list":[
+	{"root":"slow"},
+	{"root":"lethargic"},
+]},
+
+{"synonym":"price+","antonym":"price-","list":[
+	{"root":"expensive"},
+	{"root":"costly"},
+]},
+
+{"synonym":"price-","antonym":"price+","list":[
+	{"root":"cheap"},
+	{"root":"low-cost"},
+]},
+
+{"synonym":"wealth+","antonym":"wealth-","list":[
+    {"root":"rich"},
+    {"root":"well off"},
+    {"root":"affluent"},
+    {"root":"wealthy"},
+]},
+
+{"synonym":"wealth-","antonym":"wealth+","list":[
+    {"root":"poor"},
+    {"root":"penniless"},
+]},
+
+{"synonym":"fat+","antonym":"fat-","list":[
+	{"root":"fat"},
+	{"root":"plump"},
+	{"root":"chubby"},
+    {"root":"heavy"},
+]},
+
+{"synonym":"fat-","antonym":"fat+","list":[
+	{"root":"skinny"},
+	{"root":"slender"},
+    {"root":"light"},
+]},
+
+{"synonym":"strength+","antonym":"strength-","list":[
+	{"root":"strong"},
+	{"root":"athletic"},
+]},
+
+{"synonym":"strength-","antonym":"strength+","list":[
+	{"root":"weak"},
+	{"root":"feeble"},
+]},
+
+{"synonym":"loudness+","antonym":"loudness-","list":[
+	{"root":"loud"},
+	{"root":"intense"},
+	{"root":"energetic"},
+]},
+
+{"synonym":"loudness-","antonym":"loudness+","list":[
+	{"root":"quiet"},
+	{"root":"mute"},
+	{"root":"dull"},
+]},
+
+{"synonym":"orderly+","antonym":"orderly-","list":[
+	{"root":"tidy"},
+	{"root":"orderly"},
+	{"root":"harmonious"},
+]},
+
+{"synonym":"orderly-","antonym":"orderly+","list":[
+	{"root":"chaotic"},
+	{"root":"lawless"},
+	{"root":"unkempt"},
+]},
+
+{"synonym":"style+","antonym":"style-","list":[
+	{"root":"fancy"},
+	{"root":"decorated"},
+	{"root":"luxurious"},
+]},
+
+{"synonym":"style-","antonym":"style+","list":[
+	{"root":"plain"},
+	{"root":"simple"},
+	{"root":"austere"},
+]},
+
+]}
+
+

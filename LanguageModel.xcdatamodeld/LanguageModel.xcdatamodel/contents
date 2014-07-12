@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Address" representedClassName="Address" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="address" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsNumber" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <attribute name="zipcode" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="whatCity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="whatAddress" inverseEntity="City" syncable="YES"/>
+        <relationship name="whatHome" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Home" inverseName="whatAddress" inverseEntity="Home" syncable="YES"/>
+        <relationship name="whatLocation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="whatAddress" inverseEntity="Location" syncable="YES"/>
+        <relationship name="whatNation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Nation" inverseName="whatAddress" inverseEntity="Nation" syncable="YES"/>
+        <relationship name="whatState" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="State" inverseName="whatAddress" inverseEntity="State" syncable="YES"/>
+        <relationship name="whatStreet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Street" inverseName="whatAddress" inverseEntity="Street" syncable="YES"/>
+    </entity>
+    <entity name="AdjectiveClass" representedClassName="AdjectiveClass" syncable="YES">
+        <attribute name="basic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comparative" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isPositive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="superlative" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatSemanticType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdjectiveSemanticType" inverseName="whatAdjective" inverseEntity="AdjectiveSemanticType" syncable="YES"/>
+        <relationship name="whatSententialAdjective" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SententialAdjective" inverseName="whatMainAdjective" inverseEntity="SententialAdjective" syncable="YES"/>
+    </entity>
+    <entity name="AdjectiveSemanticType" representedClassName="AdjectiveSemanticType" syncable="YES">
+        <attribute name="displayOrder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatAdjective" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AdjectiveClass" inverseName="whatSemanticType" inverseEntity="AdjectiveClass" syncable="YES"/>
+    </entity>
+    <entity name="Age" representedClassName="Age" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="age" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsNumber" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="objectType" optional="YES" attributeType="String" defaultValueString="years old" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatAge" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Auxiliary" representedClassName="Auxiliary" syncable="YES">
+        <attribute name="future" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="past" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="present" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatSententialVerb" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SententialVerb" inverseName="whatAuxiliary" inverseEntity="SententialVerb" syncable="YES"/>
+    </entity>
+    <entity name="Belief" representedClassName="Belief" syncable="YES">
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="belief" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to believe" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatBelief" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Birthday" representedClassName="Birthday" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isDate" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="birthday" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsNumber" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="was born on" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatBirthday" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="BodyPart" representedClassName="BodyPart" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="body part" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to have" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatBodyPart" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Character" representedClassName="Character" syncable="YES">
+        <attribute name="deathDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="familyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="isPlural" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isSaved" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="character" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatAge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Age" inverseName="whatCharacter" inverseEntity="Age" syncable="YES"/>
+        <relationship name="whatBelief" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Belief" inverseName="whatCharacter" inverseEntity="Belief" syncable="YES"/>
+        <relationship name="whatBirthday" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Birthday" inverseName="whatCharacter" inverseEntity="Birthday" syncable="YES"/>
+        <relationship name="whatBodyPart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BodyPart" inverseName="whatCharacter" inverseEntity="BodyPart" syncable="YES"/>
+        <relationship name="whatClothes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clothes" inverseName="whatCharacter" inverseEntity="Clothes" syncable="YES"/>
+        <relationship name="whatDislike" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dislikes" inverseName="whoseDislike" inverseEntity="Dislikes" syncable="YES"/>
+        <relationship name="whatDisposition" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disposition" inverseName="whatCharacter" inverseEntity="Disposition" syncable="YES"/>
+        <relationship name="whatEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="whatCharacter" inverseEntity="Event" syncable="YES"/>
+        <relationship name="whatEyeColor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EyeColor" inverseName="whatCharacter" inverseEntity="EyeColor" syncable="YES"/>
+        <relationship name="whatGender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Gender" inverseName="whatCharacter" inverseEntity="Gender" syncable="YES"/>
+        <relationship name="whatGoal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Goal" inverseName="whoseGoal" inverseEntity="Goal" syncable="YES"/>
+        <relationship name="whatHairColor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HairColor" inverseName="whatCharacter" inverseEntity="HairColor" syncable="YES"/>
+        <relationship name="whatHeight" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Height" inverseName="whatCharacter" inverseEntity="Height" syncable="YES"/>
+        <relationship name="whatHome" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Home" inverseName="whatCharacter" inverseEntity="Home" syncable="YES"/>
+        <relationship name="whatJob" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="whatCharacter" inverseEntity="Job" syncable="YES"/>
+        <relationship name="whatLike" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Likes" inverseName="whoseLike" inverseEntity="Likes" syncable="YES"/>
+        <relationship name="whatLocation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="whatCharacter" inverseEntity="Location" syncable="YES"/>
+        <relationship name="whatNationality" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Nationality" inverseName="whatCharacter" inverseEntity="Nationality" syncable="YES"/>
+        <relationship name="whatSocialGroup" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SocialGroup" inverseName="whatCharacter" inverseEntity="SocialGroup" syncable="YES"/>
+        <relationship name="whatSpecie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Specie" inverseName="whatCharacter" inverseEntity="Specie" syncable="YES"/>
+        <relationship name="whatStatements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Statements" inverseName="whatCharacter" inverseEntity="Statements" syncable="YES"/>
+        <relationship name="whatStory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Story" inverseName="whatCharacter" inverseEntity="Story" syncable="YES"/>
+        <relationship name="whatWeight" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weight" inverseName="whatCharacter" inverseEntity="Weight" syncable="YES"/>
+    </entity>
+    <entity name="City" representedClassName="City" syncable="YES">
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="city" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatAddress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Address" inverseName="whatCity" inverseEntity="Address" syncable="YES"/>
+    </entity>
+    <entity name="Clothes" representedClassName="Clothes" syncable="YES">
+        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isWearing" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lostDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="clothes" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recievedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to have" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatClothes" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="ComparisonObject" representedClassName="ComparisonObject" syncable="YES">
+        <attribute name="adjective" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="count" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sentence" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="term1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="term2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="winner" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Copula" representedClassName="Copula" syncable="YES">
+        <attribute name="firstPersonSingular" optional="YES" attributeType="String" defaultValueString="am" syncable="YES"/>
+        <attribute name="future" optional="YES" attributeType="String" defaultValueString="be" syncable="YES"/>
+        <attribute name="infinitive" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <attribute name="pastPlural" optional="YES" attributeType="String" defaultValueString="were" syncable="YES"/>
+        <attribute name="pastSingular" optional="YES" attributeType="String" defaultValueString="was" syncable="YES"/>
+        <attribute name="presentPlural" optional="YES" attributeType="String" defaultValueString="are" syncable="YES"/>
+        <attribute name="secondPersonSingular" optional="YES" attributeType="String" defaultValueString="are" syncable="YES"/>
+        <attribute name="thirdPersonSingular" optional="YES" attributeType="String" defaultValueString="is" syncable="YES"/>
+        <relationship name="whatSententialVerb" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SententialVerb" inverseName="whatCopula" inverseEntity="SententialVerb" syncable="YES"/>
+    </entity>
+    <entity name="Determiner" representedClassName="Determiner" syncable="YES">
+        <attribute name="isAffix" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSuffix" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="theDeterminer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theWord" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ObjectPhrase" inverseName="whatDeterminer" inverseEntity="ObjectPhrase" syncable="YES"/>
+        <relationship name="whatPrepositionObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PrepositionalPhrase" inverseName="whatDeterminer" inverseEntity="PrepositionalPhrase" syncable="YES"/>
+        <relationship name="whatSubject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubjectPhrase" inverseName="whatDeterminer" inverseEntity="SubjectPhrase" syncable="YES"/>
+    </entity>
+    <entity name="Dislikes" representedClassName="Dislikes" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="dislike" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to dislike" syncable="YES"/>
+        <relationship name="whoseDislike" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatDislike" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Disposition" representedClassName="Disposition" syncable="YES">
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="disposition" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsAdjective" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatDisposition" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Duty" representedClassName="Duty" syncable="YES">
+        <attribute name="descriptor" optional="YES" attributeType="String" defaultValueString="duty" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="duty" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="whatJob" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="whatDuty" inverseEntity="Job" syncable="YES"/>
+    </entity>
+    <entity name="Event" representedClassName="Event" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isComplex" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="event" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="object" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="preposition" optional="YES" attributeType="String" defaultValueString="at" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatEvent" inverseEntity="Character" syncable="YES"/>
+        <relationship name="whatGoal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Goal" inverseName="whatEvent" inverseEntity="Goal" syncable="YES"/>
+    </entity>
+    <entity name="EyeColor" representedClassName="EyeColor" syncable="YES">
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="eye color" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsAdjective" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to have" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatEyeColor" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Gender" representedClassName="Gender" syncable="YES">
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="gender" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsAdjective" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatGender" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Goal" representedClassName="Goal" syncable="YES">
+        <attribute name="completedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="infinitive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isFinancial" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isPersonal" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSexual" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSocial" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="goal" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="whatEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="whatGoal" inverseEntity="Event" syncable="YES"/>
+        <relationship name="whoseGoal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatGoal" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="GrammarWord" representedClassName="GrammarWord" syncable="YES">
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isUserGenerated" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatSemanticType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GrammarWordSemanticType" inverseName="whatWord" inverseEntity="GrammarWordSemanticType" syncable="YES"/>
+    </entity>
+    <entity name="GrammarWordSemanticType" representedClassName="GrammarWordSemanticType" syncable="YES">
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatWord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GrammarWord" inverseName="whatSemanticType" inverseEntity="GrammarWord" syncable="YES"/>
+    </entity>
+    <entity name="HairColor" representedClassName="HairColor" syncable="YES">
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="hair color" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsAdjective" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to have" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatHairColor" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Height" representedClassName="Height" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="height" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsNumber" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to measure" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="whatHeight" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Home" representedClassName="Home" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isLocation" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="home" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <relationship name="whatAddress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="whatHome" inverseEntity="Address" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatHome" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Job" representedClassName="Job" syncable="YES">
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="job" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wage" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatJob" inverseEntity="Character" syncable="YES"/>
+        <relationship name="whatDuty" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Duty" inverseName="whatJob" inverseEntity="Duty" syncable="YES"/>
+    </entity>
+    <entity name="Likes" representedClassName="Likes" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="like" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to like" syncable="YES"/>
+        <relationship name="whoseLike" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatLike" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES">
+        <attribute name="arrivalDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="departureDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isCurrent" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isLocation" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="location" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="preposition" optional="YES" attributeType="String" defaultValueString="at" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <relationship name="whatAddress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="whatLocation" inverseEntity="Address" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatLocation" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Nation" representedClassName="Nation" syncable="YES">
+        <attribute name="adjective" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="nation" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="preposition" optional="YES" attributeType="String" defaultValueString="from" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <relationship name="whatAddress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Address" inverseName="whatNation" inverseEntity="Address" syncable="YES"/>
+    </entity>
+    <entity name="Nationality" representedClassName="Nationality" syncable="YES">
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="nationality" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsAdjective" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatNationality" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="NounProperties" representedClassName="NounProperties" syncable="YES">
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasAdjective" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasDeterminer" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasNumber" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasPossesive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasPronoun" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasSuffix" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isDate" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isFirstPerson" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isGeneralization" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isLocation" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSecondPerson" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isThirdPerson" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isTime" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semanticType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ObjectPhrase" inverseName="whatProperties" inverseEntity="ObjectPhrase" syncable="YES"/>
+        <relationship name="whatPreposition" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PrepositionalPhrase" inverseName="whatProperties" inverseEntity="PrepositionalPhrase" syncable="YES"/>
+        <relationship name="whatSubject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubjectPhrase" inverseName="whatProperties" inverseEntity="SubjectPhrase" syncable="YES"/>
+    </entity>
+    <entity name="NumberDeterminer" representedClassName="NumberDeterminer" syncable="YES">
+        <attribute name="theNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="whatObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ObjectPhrase" inverseName="whatNumber" inverseEntity="ObjectPhrase" syncable="YES"/>
+        <relationship name="whatPrepositionObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PrepositionalPhrase" inverseName="whatNumber" inverseEntity="PrepositionalPhrase" syncable="YES"/>
+        <relationship name="whatSubject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubjectPhrase" inverseName="whatNumber" inverseEntity="SubjectPhrase" syncable="YES"/>
+    </entity>
+    <entity name="ObjectPhrase" representedClassName="ObjectPhrase" syncable="YES">
+        <attribute name="isAnAdjective" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isAnEmptyObject" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isAnInfinitive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isDirectObject" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isInDirectObject" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isNumber" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isPassiveObject" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="theInfinitive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theObjectPhrase" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thePossesive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thePronoun" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theWord" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatAdjective" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SententialAdjective" inverseName="whatObject" inverseEntity="SententialAdjective" syncable="YES"/>
+        <relationship name="whatDeterminer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Determiner" inverseName="whatObject" inverseEntity="Determiner" syncable="YES"/>
+        <relationship name="whatNumber" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NumberDeterminer" inverseName="whatObject" inverseEntity="NumberDeterminer" syncable="YES"/>
+        <relationship name="whatProperties" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NounProperties" inverseName="whatObject" inverseEntity="NounProperties" syncable="YES"/>
+        <relationship name="whatSentence" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="whatObject" inverseEntity="Sentence" syncable="YES"/>
+        <relationship name="whatWord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="whatPreposition" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="PrepositionalPhrase" representedClassName="PrepositionalPhrase" syncable="YES">
+        <attribute name="emptyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAnEmptyObject" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="preposition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theInfinitive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thePossesive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thePrepositionPhrase" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thePronoun" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theWord" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatAdjective" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SententialAdjective" inverseName="whatPrepositionalPhrase" inverseEntity="SententialAdjective" syncable="YES"/>
+        <relationship name="whatDeterminer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Determiner" inverseName="whatPrepositionObject" inverseEntity="Determiner" syncable="YES"/>
+        <relationship name="whatNumber" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NumberDeterminer" inverseName="whatPrepositionObject" inverseEntity="NumberDeterminer" syncable="YES"/>
+        <relationship name="whatProperties" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NounProperties" inverseName="whatPreposition" inverseEntity="NounProperties" syncable="YES"/>
+        <relationship name="whatSemanticType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PrepositionSemanticType" inverseName="whatPreposition" inverseEntity="PrepositionSemanticType" syncable="YES"/>
+        <relationship name="whatSentence" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="whatPreposition" inverseEntity="Sentence" syncable="YES"/>
+        <relationship name="whatWord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="whatObject" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="PrepositionSemanticType" representedClassName="PrepositionSemanticType" syncable="YES">
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatPreposition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PrepositionalPhrase" inverseName="whatSemanticType" inverseEntity="PrepositionalPhrase" syncable="YES"/>
+    </entity>
+    <entity name="SemanticType" representedClassName="SemanticType" syncable="YES">
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wordObject" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="theWord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="whatSemanticType" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="Sentence" representedClassName="Sentence" syncable="YES">
+        <attribute name="characterGender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="characterName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="hasAdjectiveForObject" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasCopula" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasIndirectObject" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasMultipleObjects" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasObject" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasPreposition" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasSingleObjectUnpack" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isAnthropomorphic" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isPassive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="objectsCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="pragmaticType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sentenceAspect" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sentenceModal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sentenceTense" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="singleObjectUnpackIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="textObject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textObjectDeterminer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textObjectInfinitive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textPrep" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textPrepDeterminer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textPrepObject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textSubject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textVerb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textVerbAuxiliary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theSentence" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ObjectPhrase" inverseName="whatSentence" inverseEntity="ObjectPhrase" syncable="YES"/>
+        <relationship name="whatPreposition" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PrepositionalPhrase" inverseName="whatSentence" inverseEntity="PrepositionalPhrase" syncable="YES"/>
+        <relationship name="whatSententialVerb" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SententialVerb" inverseName="whatSentence" inverseEntity="SententialVerb" syncable="YES"/>
+        <relationship name="whatStory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Story" inverseName="whatSentences" inverseEntity="Story" syncable="YES"/>
+        <relationship name="whatSubject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubjectPhrase" inverseName="whatSentence" inverseEntity="SubjectPhrase" syncable="YES"/>
+    </entity>
+    <entity name="SententialAdjective" representedClassName="SententialAdjective" syncable="YES">
+        <attribute name="isComparative" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isIrregular" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSuperlative" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="theAdjective" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatMainAdjective" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdjectiveClass" inverseName="whatSententialAdjective" inverseEntity="AdjectiveClass" syncable="YES"/>
+        <relationship name="whatObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ObjectPhrase" inverseName="whatAdjective" inverseEntity="ObjectPhrase" syncable="YES"/>
+        <relationship name="whatPrepositionalPhrase" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PrepositionalPhrase" inverseName="whatAdjective" inverseEntity="PrepositionalPhrase" syncable="YES"/>
+        <relationship name="whatSubject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubjectPhrase" inverseName="whatAdjective" inverseEntity="SubjectPhrase" syncable="YES"/>
+    </entity>
+    <entity name="SententialVerb" representedClassName="SententialVerb" syncable="YES">
+        <attribute name="hasAuxiliary" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isCopula" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isIndirectObjectPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSubjectPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="sentenceAspect" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sentenceModal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sentenceTense" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theVerb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theVerbPhrase" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatAuxiliary" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Auxiliary" inverseName="whatSententialVerb" inverseEntity="Auxiliary" syncable="YES"/>
+        <relationship name="whatCopula" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Copula" inverseName="whatSententialVerb" inverseEntity="Copula" syncable="YES"/>
+        <relationship name="whatSentence" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="whatSententialVerb" inverseEntity="Sentence" syncable="YES"/>
+        <relationship name="whatVerbWord" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VerbWord" inverseName="whatSententialVerb" inverseEntity="VerbWord" syncable="YES"/>
+    </entity>
+    <entity name="SmallCharacter" representedClassName="SmallCharacter" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatClass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SmallCharacterClass" inverseName="whatCharacter" inverseEntity="SmallCharacterClass" syncable="YES"/>
+        <relationship name="whatDescription" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SmallCharacterDescription" inverseName="whatCharacter" inverseEntity="SmallCharacterDescription" syncable="YES"/>
+    </entity>
+    <entity name="SmallCharacterClass" representedClassName="SmallCharacterClass" syncable="YES">
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SmallCharacter" inverseName="whatClass" inverseEntity="SmallCharacter" syncable="YES"/>
+    </entity>
+    <entity name="SmallCharacterDescription" representedClassName="SmallCharacterDescription" syncable="YES">
+        <attribute name="metaType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SmallCharacter" inverseName="whatDescription" inverseEntity="SmallCharacter" syncable="YES"/>
+    </entity>
+    <entity name="SocialGroup" representedClassName="SocialGroup" syncable="YES">
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="isPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatSocialGroup" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Specie" representedClassName="Specie" syncable="YES">
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="specie" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to be" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatSpecie" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="State" representedClassName="State" syncable="YES">
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="state" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatAddress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Address" inverseName="whatState" inverseEntity="Address" syncable="YES"/>
+    </entity>
+    <entity name="Statements" representedClassName="Statements" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="statement" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to say" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="whatStatements" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Story" representedClassName="Story" syncable="YES">
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isSaved" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theStory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatStory" inverseEntity="Character" syncable="YES"/>
+        <relationship name="whatSentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="whatStory" inverseEntity="Sentence" syncable="YES"/>
+    </entity>
+    <entity name="Street" representedClassName="Street" syncable="YES">
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="street" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatAddress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Address" inverseName="whatStreet" inverseEntity="Address" syncable="YES"/>
+    </entity>
+    <entity name="SubjectPhrase" representedClassName="SubjectPhrase" syncable="YES">
+        <attribute name="isCharacter" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="thePossesive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thePronoun" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theSubjectPhrase" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theWord" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatAdjective" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SententialAdjective" inverseName="whatSubject" inverseEntity="SententialAdjective" syncable="YES"/>
+        <relationship name="whatDeterminer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Determiner" inverseName="whatSubject" inverseEntity="Determiner" syncable="YES"/>
+        <relationship name="whatNumber" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NumberDeterminer" inverseName="whatSubject" inverseEntity="NumberDeterminer" syncable="YES"/>
+        <relationship name="whatProperties" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NounProperties" inverseName="whatSubject" inverseEntity="NounProperties" syncable="YES"/>
+        <relationship name="whatSentence" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="whatSubject" inverseEntity="Sentence" syncable="YES"/>
+        <relationship name="whatWord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="whatSubject" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="SynonymObjectClass" representedClassName="SynonymObjectClass" syncable="YES">
+        <attribute name="antonym" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatWord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SynonymWordClass" inverseName="whatType" inverseEntity="SynonymWordClass" syncable="YES"/>
+    </entity>
+    <entity name="SynonymWordClass" representedClassName="SynonymWordClass" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatType" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SynonymObjectClass" inverseName="whatWord" inverseEntity="SynonymObjectClass" syncable="YES"/>
+    </entity>
+    <entity name="SyntacticType" representedClassName="SyntacticType" syncable="YES">
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="theWord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="whatSyntacticType" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="VerbSemanticType" representedClassName="VerbSemanticType" syncable="YES">
+        <attribute name="isDiTransitive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isIntransitive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatVerb" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VerbWord" inverseName="whatSemanticType" inverseEntity="VerbWord" syncable="YES"/>
+    </entity>
+    <entity name="VerbWord" representedClassName="VerbWord" syncable="YES">
+        <attribute name="gerund" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infinitive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="past" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="perfect" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="simple" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thirdPersonSingular" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatSemanticType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VerbSemanticType" inverseName="whatVerb" inverseEntity="VerbSemanticType" syncable="YES"/>
+        <relationship name="whatSententialVerb" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SententialVerb" inverseName="whatVerbWord" inverseEntity="SententialVerb" syncable="YES"/>
+    </entity>
+    <entity name="Weight" representedClassName="Weight" syncable="YES">
+        <attribute name="isDirectIdentity" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="metaType" optional="YES" attributeType="String" defaultValueString="weight" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectIsNumber" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="verb" optional="YES" attributeType="String" defaultValueString="to weigh" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="whatWeight" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Word" representedClassName="Word" syncable="YES">
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="english" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="french" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasDefiniteDeterminer" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isAdjective" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isNumber" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isPlural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isProperName" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isUncountable" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="mandarin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wordObject" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PrepositionalPhrase" inverseName="whatWord" inverseEntity="PrepositionalPhrase" syncable="YES"/>
+        <relationship name="whatPreposition" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ObjectPhrase" inverseName="whatWord" inverseEntity="ObjectPhrase" syncable="YES"/>
+        <relationship name="whatSemanticType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SemanticType" inverseName="theWord" inverseEntity="SemanticType" syncable="YES"/>
+        <relationship name="whatSubject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubjectPhrase" inverseName="whatWord" inverseEntity="SubjectPhrase" syncable="YES"/>
+        <relationship name="whatSyntacticType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SyntacticType" inverseName="theWord" inverseEntity="SyntacticType" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="502" positionY="1089" width="128" height="238"/>
+        <element name="AdjectiveClass" positionX="-396" positionY="-16" width="128" height="148"/>
+        <element name="AdjectiveSemanticType" positionX="-396" positionY="-124" width="128" height="88"/>
+        <element name="Age" positionX="403" positionY="497" width="128" height="163"/>
+        <element name="Auxiliary" positionX="-1161" positionY="365" width="128" height="103"/>
+        <element name="Belief" positionX="-110" positionY="81" width="128" height="148"/>
+        <element name="Birthday" positionX="405" positionY="684" width="128" height="163"/>
+        <element name="BodyPart" positionX="-252" positionY="1052" width="128" height="163"/>
+        <element name="Character" positionX="171" positionY="191" width="128" height="523"/>
+        <element name="City" positionX="657" positionY="1181" width="128" height="88"/>
+        <element name="Clothes" positionX="-252" positionY="1226" width="128" height="223"/>
+        <element name="ComparisonObject" positionX="-243" positionY="-378" width="128" height="148"/>
+        <element name="Copula" positionX="-1161" positionY="488" width="128" height="178"/>
+        <element name="Determiner" positionX="-963" positionY="1080" width="128" height="148"/>
+        <element name="Dislikes" positionX="-110" positionY="621" width="128" height="178"/>
+        <element name="Disposition" positionX="576" positionY="603" width="128" height="133"/>
+        <element name="Duty" positionX="-299" positionY="854" width="128" height="118"/>
+        <element name="Event" positionX="-110" positionY="383" width="128" height="223"/>
+        <element name="EyeColor" positionX="574" positionY="306" width="128" height="133"/>
+        <element name="Gender" positionX="574" positionY="452" width="128" height="133"/>
+        <element name="Goal" positionX="-297" positionY="378" width="128" height="298"/>
+        <element name="GrammarWord" positionX="-792" positionY="-376" width="128" height="103"/>
+        <element name="GrammarWordSemanticType" positionX="-630" positionY="-376" width="128" height="88"/>
+        <element name="HairColor" positionX="574" positionY="162" width="128" height="133"/>
+        <element name="Height" positionX="403" positionY="160" width="128" height="148"/>
+        <element name="Home" positionX="331" positionY="1025" width="128" height="178"/>
+        <element name="Job" positionX="-299" positionY="695" width="128" height="133"/>
+        <element name="Likes" positionX="-110" positionY="827" width="128" height="178"/>
+        <element name="Location" positionX="-108" positionY="1242" width="128" height="208"/>
+        <element name="Nation" positionX="657" positionY="1395" width="128" height="133"/>
+        <element name="Nationality" positionX="574" positionY="756" width="128" height="133"/>
+        <element name="NounProperties" positionX="-1449" positionY="1070" width="128" height="343"/>
+        <element name="NumberDeterminer" positionX="-1298" positionY="1071" width="128" height="103"/>
+        <element name="ObjectPhrase" positionX="-974" positionY="716" width="128" height="313"/>
+        <element name="PrepositionalPhrase" positionX="-794" positionY="716" width="128" height="268"/>
+        <element name="PrepositionSemanticType" positionX="-630" positionY="1019" width="128" height="88"/>
+        <element name="SemanticType" positionX="-630" positionY="-252" width="128" height="103"/>
+        <element name="Sentence" positionX="-594" positionY="189" width="128" height="568"/>
+        <element name="SententialAdjective" positionX="-1134" positionY="1071" width="128" height="163"/>
+        <element name="SententialVerb" positionX="-1161" positionY="716" width="128" height="238"/>
+        <element name="SmallCharacter" positionX="34" positionY="-252" width="128" height="103"/>
+        <element name="SmallCharacterClass" positionX="189" positionY="-252" width="128" height="103"/>
+        <element name="SmallCharacterDescription" positionX="34" positionY="-378" width="128" height="103"/>
+        <element name="SocialGroup" positionX="-99" positionY="1053" width="128" height="133"/>
+        <element name="Specie" positionX="331" positionY="1215" width="128" height="118"/>
+        <element name="State" positionX="657" positionY="1287" width="128" height="88"/>
+        <element name="Statements" positionX="-110" positionY="242" width="128" height="133"/>
+        <element name="Story" positionX="-432" positionY="189" width="128" height="148"/>
+        <element name="Street" positionX="657" positionY="1080" width="128" height="88"/>
+        <element name="SubjectPhrase" positionX="-1352" positionY="719" width="128" height="223"/>
+        <element name="SynonymObjectClass" positionX="-432" positionY="-378" width="128" height="88"/>
+        <element name="SynonymWordClass" positionX="-432" positionY="-261" width="128" height="73"/>
+        <element name="SyntacticType" positionX="-630" positionY="-124" width="128" height="88"/>
+        <element name="VerbSemanticType" positionX="-954" positionY="-378" width="128" height="103"/>
+        <element name="VerbWord" positionX="-956" positionY="-252" width="128" height="163"/>
+        <element name="Weight" positionX="403" positionY="331" width="128" height="148"/>
+        <element name="Word" positionX="-792" positionY="-252" width="128" height="328"/>
+    </elements>
+</model>

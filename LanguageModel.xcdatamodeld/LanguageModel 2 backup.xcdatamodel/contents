@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="BodyPart" representedClassName="BodyPart" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatBodyPart" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Character" representedClassName="Character" syncable="YES">
+        <attribute name="birthDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deathDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="whatBodyPart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BodyPart" inverseName="whatCharacter" inverseEntity="BodyPart" syncable="YES"/>
+        <relationship name="whatClothes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clothes" inverseName="whatCharacter" inverseEntity="Clothes" syncable="YES"/>
+        <relationship name="whatEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="whatCharacter" inverseEntity="Event" syncable="YES"/>
+        <relationship name="whatGoal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Goal" inverseName="whoseGoal" inverseEntity="Goal" syncable="YES"/>
+        <relationship name="whatHome" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HomeLocation" inverseName="whatCharacter" inverseEntity="HomeLocation" syncable="YES"/>
+        <relationship name="whatInterest" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interests" inverseName="whoseInterest" inverseEntity="Interests" syncable="YES"/>
+        <relationship name="whatJob" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="whatCharacter" inverseEntity="Job" syncable="YES"/>
+        <relationship name="whatLocation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="whatCharacter" inverseEntity="Location" syncable="YES"/>
+        <relationship name="whatSpecie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Specie" inverseName="whatCharacter" inverseEntity="Specie" syncable="YES"/>
+    </entity>
+    <entity name="Clothes" representedClassName="Clothes" syncable="YES">
+        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isWearing" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lostDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="recievedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatClothes" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Duty" representedClassName="Duty" syncable="YES">
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="whatJob" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="whatDuty" inverseEntity="Job" syncable="YES"/>
+    </entity>
+    <entity name="Event" representedClassName="Event" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatEvent" inverseEntity="Character" syncable="YES"/>
+        <relationship name="whatGoal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Goal" inverseName="whatEvent" inverseEntity="Goal" syncable="YES"/>
+    </entity>
+    <entity name="Goal" representedClassName="Goal" syncable="YES">
+        <attribute name="completedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isFinancial" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isPersonal" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSexual" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSocial" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="whatEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="whatGoal" inverseEntity="Event" syncable="YES"/>
+        <relationship name="whoseGoal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatGoal" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="HomeLocation" representedClassName="HomeLocation" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatHome" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Interests" representedClassName="Interests" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isHate" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isLike" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="whoseInterest" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatInterest" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Job" representedClassName="Job" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wage" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatJob" inverseEntity="Character" syncable="YES"/>
+        <relationship name="whatDuty" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Duty" inverseName="whatJob" inverseEntity="Duty" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES">
+        <attribute name="arrivalDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="departureDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatLocation" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="SemanticType" representedClassName="SemanticType" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="theWord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="whatSemanticType" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="Specie" representedClassName="Specie" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whatCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="whatSpecie" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="SyntacticType" representedClassName="SyntacticType" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="theWord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="whatSyntacticType" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="Word" representedClassName="Word" syncable="YES">
+        <attribute name="countable" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="english" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="french" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mandarin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="properName" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="whatSemanticType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SemanticType" inverseName="theWord" inverseEntity="SemanticType" syncable="YES"/>
+        <relationship name="whatSyntacticType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SyntacticType" inverseName="theWord" inverseEntity="SyntacticType" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SemanticType" positionX="-135" positionY="-198" width="128" height="73"/>
+        <element name="SyntacticType" positionX="-135" positionY="-91" width="128" height="73"/>
+        <element name="Word" positionX="-324" positionY="-198" width="128" height="178"/>
+        <element name="Character" positionX="-362" positionY="108" width="128" height="268"/>
+        <element name="Specie" positionX="-153" positionY="504" width="128" height="73"/>
+        <element name="Clothes" positionX="-119" positionY="270" width="128" height="178"/>
+        <element name="BodyPart" positionX="-144" positionY="143" width="128" height="118"/>
+        <element name="Interests" positionX="-362" positionY="414" width="128" height="148"/>
+        <element name="Goal" positionX="-666" positionY="59" width="128" height="238"/>
+        <element name="Job" positionX="-587" positionY="347" width="128" height="103"/>
+        <element name="Event" positionX="-497" positionY="62" width="128" height="118"/>
+        <element name="Location" positionX="-533" positionY="482" width="128" height="103"/>
+        <element name="HomeLocation" positionX="-801" positionY="221" width="128" height="103"/>
+        <element name="Duty" positionX="-801" positionY="356" width="128" height="103"/>
+    </elements>
+</model>
